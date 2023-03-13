@@ -1,6 +1,10 @@
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:myflutter/page1.dart';
+import 'package:myflutter/page2.dart';
+import 'package:myflutter/page3.dart';
 
 void main() {
   runApp(const MyHome());
@@ -15,7 +19,7 @@ class MyHome extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       darkTheme: ThemeData(primarySwatch: Colors.cyan),
       debugShowCheckedModeBanner: false,
-      home: MyApp3(),
+      home: MyApp10(),
     );
   }
 }
@@ -128,8 +132,8 @@ class MyApp3 extends StatelessWidget {
               // flex: 2,
               Expanded(
                 child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width / 6,
+                  height: MediaQuery.of(context).size.height * 2,
+                  width: MediaQuery.of(context).size.width / 2,
                   color: Colors.blueGrey,
                 ),
               ),
@@ -250,6 +254,195 @@ class MyApp6 extends StatelessWidget {
             // child: Image.asset('images/robot.jpg'),
             child: Image.network(
                 'https://e1.pxfuel.com/desktop-wallpaper/272/895/desktop-wallpaper-3d-for-android-mobile-3d-mobile-thumbnail.jpg'),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp7 extends StatelessWidget {
+  const MyApp7({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('My Flutter App'),
+            centerTitle: true,
+            toolbarHeight: 60, //default height 60
+            toolbarOpacity: 1, //default opacity 1
+            backgroundColor: Colors.deepPurple,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    print("menu clicked");
+                    DropdownMenuItem;
+                  },
+                  icon: Icon(Icons.menu))
+            ],
+          ),
+          body: ListView(
+            children: [
+              ListTile(
+                title: Text('Person 1'),
+                subtitle: Text('List Tile 1 Subtitle'),
+                leading: CircleAvatar(
+                  child: Icon(Icons.account_circle),
+                ),
+                trailing: Icon(Icons.call),
+              ),
+              ListTile(
+                title: Text('Person 2'),
+                subtitle: Text('List Tile 2 Subtitle'),
+                leading: CircleAvatar(
+                  child: Icon(Icons.account_circle),
+                ),
+                trailing: Icon(Icons.call),
+              ),
+              ListTile(
+                title: Text('Person 3'),
+                subtitle: Text('List Tile 3 Subtitle'),
+                leading: CircleAvatar(
+                  child: Icon(Icons.account_circle),
+                ),
+                trailing: Icon(Icons.call),
+              ),
+              ListTile(
+                title: Text('Person 4'),
+                subtitle: Text('List Tile 4 Subtitle'),
+                leading: CircleAvatar(
+                  child: Icon(Icons.account_circle),
+                ),
+                trailing: Icon(Icons.call),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp8 extends StatelessWidget {
+  const MyApp8({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final pages = [
+      Container(
+        color: Colors.amberAccent,
+        child: Center(
+          child: Text('1st Page'),
+        ),
+      ),
+      Container(
+        color: Colors.blueAccent,
+        child: Center(
+          child: Text('2nd Page'),
+        ),
+      ),
+      Container(
+        color: Colors.deepOrangeAccent,
+        child: Center(
+          child: Text('3rd Page'),
+        ),
+      ),
+    ];
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          body: LiquidSwipe(pages: pages),
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp9 extends StatelessWidget {
+  const MyApp9({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final pages = [
+      Page1(),
+      Page2(),
+      Page3(),
+    ];
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          body: LiquidSwipe(pages: pages),
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp10 extends StatelessWidget {
+  const MyApp10({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GridView.count(
+              crossAxisCount: 4,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              children: [
+                Container(
+                  color: Colors.amber,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.black,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.blue,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.brown,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.cyan,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.deepOrange,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.deepPurple,
+                  height: 250,
+                  width: 250,
+                ),
+                Container(
+                  color: Colors.green,
+                  height: 250,
+                  width: 250,
+                ),
+              ],
+            ),
           ),
         ),
       ),
