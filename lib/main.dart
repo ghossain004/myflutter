@@ -19,7 +19,40 @@ class MyHome extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       darkTheme: ThemeData(primarySwatch: Colors.cyan),
       debugShowCheckedModeBanner: false,
-      home: MyApp10(),
+      home: MyApp12(),
+    );
+  }
+}
+
+class MyApp12 extends StatelessWidget {
+  const MyApp12({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
+            tabs: [
+              Tab(
+                icon: Icon(Icons.yard),
+              ),
+              Tab(
+                icon: Icon(Icons.adb_rounded),
+              ),
+              Tab(
+                icon: Icon(Icons.account_balance),
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(children: [
+          Page1(),
+          Page2(),
+          Page3(),
+        ]),
+      ),
     );
   }
 }
@@ -444,6 +477,55 @@ class MyApp10 extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp11 extends StatefulWidget {
+  const MyApp11({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp11> createState() => _MyApp11State();
+}
+
+class _MyApp11State extends State<MyApp11> {
+  var _currentState = 0;
+  final pages = [
+    Page1(),
+    Page2(),
+    Page3(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentState,
+            items: [
+              BottomNavigationBarItem(
+                label: 'Favorite',
+                icon: Icon(Icons.star_border),
+              ),
+              BottomNavigationBarItem(
+                label: 'Recent',
+                icon: Icon(Icons.call),
+              ),
+              BottomNavigationBarItem(
+                label: 'Contact',
+                icon: Icon(Icons.contact_page),
+              ),
+            ],
+            onTap: (index) {
+              setState(() {
+                _currentState = index;
+              });
+            },
+          ),
+          body: pages[_currentState],
         ),
       ),
     );
